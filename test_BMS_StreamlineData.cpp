@@ -6,5 +6,10 @@
 
 TEST_CASE("Test whether sensor inputs can be read from text file")
 {
-  REQUIRE(readSensorDataFromTxt("./Sender/sensorStreamlineData.txt") == true);
+  REQUIRE(sendSensorDataToRx() == true);
+}
+
+TEST_CASE("Test whether sensor inputs can not be read from text file")
+{
+  REQUIRE(readSensorDataFromTxt("./Sender/emptyfile.txt") == false);
 }

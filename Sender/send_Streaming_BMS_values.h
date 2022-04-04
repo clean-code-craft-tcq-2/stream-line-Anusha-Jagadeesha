@@ -12,13 +12,7 @@ typedef struct batteryParam
 {
     float SOC[MAX_BMS_STREAM_READINGS];
     float temperature[MAX_BMS_STREAM_READINGS];
-}prepareSensorInputToSender;
+} prepareSensorInputToSender;
 
-
-class bmsSender
-{
-    public:
-    prepareSensorInputToSender m_prepareSensorInputToSender;
-    bool readSensorDataFromTxt(string inputFile);
-    bool sendSensorDataToRx();
-};
+bool readSensorDataFromTxt(string inputFile);
+bool sendSensorDataToRx();
