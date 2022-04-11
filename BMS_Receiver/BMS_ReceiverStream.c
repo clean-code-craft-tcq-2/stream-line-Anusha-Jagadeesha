@@ -8,7 +8,7 @@ int NoOfEnteries = 5;
 
 void getDataFromConsole()
 {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < BMS_DATA; i++)
 	{
 		scanf("%f\t%f\n", &Temp[i], &Soc[i]);
 	}
