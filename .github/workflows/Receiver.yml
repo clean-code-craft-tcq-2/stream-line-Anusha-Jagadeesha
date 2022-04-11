@@ -15,10 +15,10 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y gcovr
     - name: build
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o receiver ./*.c* ./BMS_Receiver/*.c
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker ./*.cpp* ./BMS_Receiver/*.c
       
     - name: run
-      run: ./receiver
+      run: ./testchecker
 
     - name: collect coverage
       run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html
@@ -29,3 +29,4 @@ jobs:
         name: coverage
         path: ./*.html
         retention-days: 90
+        
