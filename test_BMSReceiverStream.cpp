@@ -30,8 +30,9 @@ SCENARIO("Get BMS parameters values from Sender output console and check minimum
 		REQUIRE( maxBMSParameterValue(StateOfCharge, NoOfSocSample) == expectedMaxSoc);
 		REQUIRE( calculateSMA(Temperature, NoOfEnteries) == expectedSMATemp);
 		REQUIRE( calculateSMA(StateOfCharge, NoOfEnteries) == expectedSMASoc );
+		printData();
             }
-	    printData();
+	    
         }
     }
 }
