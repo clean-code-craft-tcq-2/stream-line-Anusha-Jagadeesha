@@ -1,0 +1,23 @@
+name: Sender pipe with receiver
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: build
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker ./Sender/*.cpp
+      
+    - name: Build receiver for pipe
+      run: gcc -DMAIN -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker1 ./Bms_Receiver/*.c
+      
+    - name: run
+      run: ./testchecker
+      
+    - name : Sender | Reciever
+      run: ./testchecker | ./testchecker1
