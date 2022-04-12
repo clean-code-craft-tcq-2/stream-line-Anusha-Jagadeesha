@@ -1,0 +1,29 @@
+name: Sender pipe with receiver
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: build sender
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testsender test_BMS_StreamlineData.cpp ./Sender/send_Streaming_BMS_values.cpp
+  
+      
+    - name: run sender
+      run: ./testsender
+      
+    - name: build receiver
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testreceiver test_BMSReceiverStream.cpp ./BMS_Receiver/*.c
+  
+      
+    - name: run receiver
+      run: ./testreceiver
+   
+          
+    - name : Sender | Reciever
+      run: ./testsender | ./testreceiver
