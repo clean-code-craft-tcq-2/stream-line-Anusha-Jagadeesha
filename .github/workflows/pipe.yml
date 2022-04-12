@@ -10,14 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: build
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker ./Sender/send_Streaming_BMS_values.cpp
-      
-    - name: Build receiver for pipe
-      run: g++ -DMAIN -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker1 ./BMS_Receiver/*.c
-      
-    - name: run
-      run: ./testchecker
-      
+          
     - name : Sender | Reciever
-      run: ./testchecker | ./testchecker1
+      run: ./testsender | ./testreceiver
