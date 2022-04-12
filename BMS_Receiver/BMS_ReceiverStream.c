@@ -6,7 +6,7 @@ float Soc[BMS_DATA] = {};
 
 int NoOfEnteries = 5;
 
-void getDataFromConsole()
+void readDataFromConsole()
 {
 	for (int i = 0; i < BMS_DATA; i++)
 	{
