@@ -4,36 +4,31 @@
 #include "test/catch.hpp"
 #include "BMS_Receiver/BMS_ReceiverStream.h"
 
-/*
-SCENARIO("Get the  input data StateofCharge and Temp value from file")
+SCENARIO("Get BMS parameters values from Sender output console and check minimum , maximuma and simple moving avarage for BMS parameters ")
 {
-    GIVEN("Read input from the SenderInputFile.txt")
-    {
-        WHEN("FileInputType contains Sender Input data values")
+    GIVEN("Receives the BMS parameters values line by line from the console")
+    {	float Temperature[BMS_DATA] = {1 , 1.5, 2.3, 3, 10.2, 5};
+		float StateOfCharge[BMS_DATA] = { 21, 22, 32.5 ,23.4, 25.5, 30.9};
+		float expectedSMATemp = 3.6 ;
+		float expectedSMASoc = 24.88 ;
+		float expectedMinTemp = 1.0 ;
+		float expectedMaxTemp = 10.2 ;
+		float expectedMinSoc  = 21.0 ;
+		float expectedMaxSoc  = 32.5 ;
+        WHEN("reads Sender Data from console using readDataFromConsole")
         {
-            BMS_inputtype inputvaluefetch = FileInputType;
-            THEN("check all the input values from file")
+            readDataFromConsole();
+				float Soc_SMA = calculateSMA(StateOfCharge ,NoOfEnteries);
+				float Temp_SMA = calculateSMA(Temperature ,NoOfEnteries);
+            THEN("check min , max and SMA for BMS parametes temperature and SOC")
             {
-               REQUIRE(inputvalue (inputvaluefetch) == E_OK);
+				REQUIRE( calculateSMA(StateOfCharge ,NoOfEnteries)) == expectedSMASoc );
+				REQUIRE( calculateSMA(Temperature ,NoOfEnteries) == expectedSMATemp);
+				REQUIRE( minBMSParameterValue(Temperature, BMS_DATA) == expectedMinTemp );
+				REQUIRE( maxBMSParameterValue(Temperature, BMS_DATA) == expectedMaxTemp);
+				REQUIRE( minBMSParameterValue(StateOfCharge, BMS_DATA) == expectedMinSoc);
+				REQUIRE( maxBMSParameterValue(StateOfCharge, BMS_DATA) == expectedMaxSoc);
             }
         }
     }
 }
-
-
-SCENARIO("Check the input data values print on console")
-{
-    GIVEN("print output on console")
-    {
-        WHEN("printtoconsole contains Sender output data values")
-        {
-            BMS_inputtype inputvaluefetch = FileInputType;
-            BMS_outputtype outputvaluefetch = printtoconsole;
-            THEN("check all the onput data values priniting on console")
-            {
-               REQUIRE(inputvalue (inputvaluefetch) == E_OK);
-               REQUIRE(outputvalue (outputvaluefetch) == E_OK);
-            }
-        }
-    }
-}*/
