@@ -6,7 +6,7 @@
 
 #define BMS_DATA 50
 
-extern void getDataFromConsole();
+extern void readDataFromConsole();
 extern float minBMSParameterValue(float BatteryParameter[] , int size);
 extern float maxBMSParameterValue(float BatteryParameter[] , int size);
 extern float calculateSMA(float BatteryParameter[], int NoOfEnteries);
