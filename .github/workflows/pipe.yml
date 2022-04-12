@@ -10,13 +10,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
-    - name: build for receiver
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testreceiver ./BMS_Receiver/*.c
-  
+    - name: build
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker ./Sender/*.cpp*   
+      
+    - name: run for sender
+      run: ./testchecker
+      
+    - name: Build receiver for pipe
+      run: gcc -DMAIN -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker1 ./BMS_Receiver/*.c
+      
       
     - name: run for receiver
-      run: ./testreceiver
+      run: ./testchecker1
     
           
     - name : Sender | Reciever
-      run: ./testsender | ./testreceiver
+      run: ./testchecker | ./testchecker1
