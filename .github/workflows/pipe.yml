@@ -14,7 +14,7 @@ jobs:
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker ./Sender/*.cpp
       
     - name: Build receiver for pipe
-      run: gcc -DMAIN -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker1 ./Bms_Receiver/*.c
+      run: gcc -DMAIN -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker1 ./BMS_Receiver/*.c
       
     - name: run
       run: ./testchecker
