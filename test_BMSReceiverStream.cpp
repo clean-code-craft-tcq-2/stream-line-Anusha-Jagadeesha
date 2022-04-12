@@ -7,8 +7,10 @@
 SCENARIO("Get BMS parameters values from Sender output console and check minimum , maximuma and simple moving avarage for BMS parameters ")
 {
     GIVEN("Receives the BMS parameters values line by line from the console")
-    {	float Temperature[BMS_DATA] = {1 , 1.5, 2.3, 3, 10.2, 5};
-		float StateOfCharge[BMS_DATA] = { 21, 22, 32.5 ,23.4, 25.5, 30.9};
+    {	
+	    	float Temperature[6] = {1 , 1.5, 2.3, 3, 10.2, 5};
+		float StateOfCharge[6] = { 21, 22, 32.5 ,23.4, 25.5, 30.9};
+	    	int size = 6;
 		float expectedSMATemp = 3.6 ;
 		float expectedSMASoc = 24.88 ;
 		float expectedMinTemp = 1.0 ;
@@ -23,10 +25,10 @@ SCENARIO("Get BMS parameters values from Sender output console and check minimum
             {
 				//REQUIRE( calculateSMA(StateOfCharge, NoOfEnteries) == expectedSMASoc );
 				//REQUIRE( calculateSMA(Temperature, NoOfEnteries) == expectedSMATemp);
-				REQUIRE( minBMSParameterValue(Temperature, BMS_DATA) == expectedMinTemp );
-				REQUIRE( maxBMSParameterValue(Temperature, BMS_DATA) == expectedMaxTemp);
-				REQUIRE( minBMSParameterValue(StateOfCharge, BMS_DATA) == expectedMinSoc);
-				REQUIRE( maxBMSParameterValue(StateOfCharge, BMS_DATA) == expectedMaxSoc);
+				REQUIRE( minBMSParameterValue(Temperature, size) == expectedMinTemp );
+				REQUIRE( maxBMSParameterValue(Temperature, size) == expectedMaxTemp);
+				REQUIRE( minBMSParameterValue(StateOfCharge, size) == expectedMinSoc);
+				REQUIRE( maxBMSParameterValue(StateOfCharge, size) == expectedMaxSoc);
             }
         }
     }
